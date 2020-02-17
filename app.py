@@ -34,8 +34,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    re = "您輸入的是'{}'\n你家靈堂失火".format(message)
-    line_bot_api.reply_message(event.reply_token, re)
+    message = "AAAAAAAAAAAAAAA"
+    line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
