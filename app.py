@@ -34,8 +34,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    respone = '轟隆隆隆🤣🤣隆隆隆隆衝衝衝衝😏😏😏拉風😎😎😎引擎發動🔑🔑🔑引擎發動+🚗+👉+🚗轟隆隆隆🤣🤣隆隆隆隆衝衝衝衝😏😏😏拉風😎😎😎引擎發動🔑🔑🔑引擎發動+🚗+👉+🚗'
-    line_bot_api.reply_message(event.reply_token, respone)
+    re = "您輸入的是'{}'\n你家靈堂失火".format(message)
+    line_bot_api.reply_message(event.reply_token, re)
 
 import os
 if __name__ == "__main__":
