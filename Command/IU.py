@@ -11,26 +11,28 @@ class IU:
         self.parameter = parameter
 
     def execute(self):
-        url = 'https://www.google.com.sg/search?q={}&tbm=isch&tbs=sbd:0'.\
-            format("IU")
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        response = requests.get(url, headers=headers, verify=False)  # 使用header避免訪問受到限制
-        soup = BeautifulSoup(response.content, 'html.parser')
-        items = soup.find_all('img')
-        img_url=list()
-        for item in items:
-            url = item.get('src')
-            # print(url)
-            avid_pattern = re.compile("^http")
-            n = avid_pattern.match(str(url))
-            if n:
-                img_url.append(url)
+        try:
+            url = 'https://www.google.com.sg/search?q={}&tbm=isch&tbs=sbd:0'.\
+                format("IU")
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            response = requests.get(url, headers=headers, verify=False)  # 使用header避免訪問受到限制
+            soup = BeautifulSoup(response.content, 'html.parser')
+            items = soup.find_all('img')
+            img_url=list()
+            for item in items:
+                url = item.get('src')
+                # print(url)
+                avid_pattern = re.compile("^http")
+                n = avid_pattern.match(str(url))
+                if n:
+                    img_url.append(url)
 
-        message_url = choice(img_url)
-        print(message_url)
-        message = ResultSender.image_send_message(
-            original_content_url=message_url, preview_image_url=message_url)
-        # message = ResultSender.text_send_message(text="你才咪妃，你全家都咪妃!")
+            message_url = choice(img_url)
+            print(message_url)
+            message = ResultSender.image_send_message(
+                original_content_url=message_url, preview_image_url=message_url)
+        except:
+            message = ResultSender.text_send_message(text="你才咪妃，你全家都咪妃!")
         # message = ResultSender.text_send_message(text=message_url)
         LineBotController.reply_message(self.replyToken, message)
 
