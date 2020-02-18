@@ -40,7 +40,7 @@ def handle_message(event):
 
     try:
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(event.source.userId)
-        profile = line_bot_api.get_profile(user_id=event.source.userId)
+        profile = line_bot_api.get_profile(user_id=event.source.user_id)
         profile_information = "\n{}\n{}".format(profile.display_name, profile.picture_url)
         line_notify_message = "\n{}\n{}\n{}".format(event, profile_information, re)
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
