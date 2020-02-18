@@ -6,5 +6,5 @@ class NotFoundCommand:
         self.replyToken = replyToken
     def execute(self):
         message = ResultSender.text_send_message(text="感謝您的幫忙")
-        LineBotController.line_bot_api(self.replyToken, message)
+        LineBotController.reply_message(self.replyToken, message)
         print(self.replyToken)

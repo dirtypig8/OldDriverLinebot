@@ -37,16 +37,16 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
-    re = "你輸入的是: '{}'\n\n感謝您的幫忙".format(event.message.text)
-    message = TextSendMessage(text=re)
-    line_bot_api.reply_message(event.reply_token, message)
+    # message = TextSendMessage(text=event.message.text)
+    # re = "你輸入的是: '{}'\n\n感謝您的幫忙".format(event.message.text)
+    # message = TextSendMessage(text=re)
+    # line_bot_api.reply_message(event.reply_token, message)
 
     try:
         CommandExecutor().execute(command_json=event)
         profile = line_bot_api.get_profile(user_id=event.source.user_id)
         profile_information = "\n使用者: {}\n照片URL: {}".format(profile.display_name, profile.picture_url)
-        line_notify_message = "\n{}\nmessage: '{}'".format(event, profile_information, re)
+        line_notify_message = "\n{}\nmessage: '{}'".format(event, profile_information)
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
 
     except Exception as e:

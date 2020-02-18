@@ -1,2 +1,2 @@
 class LineBotController:
-    line_bot_api=None
+    reply_message=None
