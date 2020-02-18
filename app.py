@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-
+from Module.LineBot import LineNotify
 app = Flask(__name__)
 
 # Channel Access Token
@@ -37,6 +37,8 @@ def handle_message(event):
     re = "你輸入的是{}\n\n你家靈堂失火".format(event.message.text)
     message = TextSendMessage(text=re)
     line_bot_api.reply_message(event.reply_token, message)
+    line_notify_message = "{} {}".format(event.message, re)
+    LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
 
 import os
 if __name__ == "__main__":
