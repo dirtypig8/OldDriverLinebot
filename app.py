@@ -46,7 +46,7 @@ def handle_message(event):
         CommandExecutor().execute(command_json=event)
         profile = line_bot_api.get_profile(user_id=event.source.user_id)
         profile_information = "\n使用者: {}\n照片URL: {}".format(profile.display_name, profile.picture_url)
-        line_notify_message = "\n{}\nmessage: '{}'".format(event, profile_information)
+        line_notify_message = "\n{}\n\nmessage: '{}'".format(profile_information, event)
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
 
     except Exception as e:

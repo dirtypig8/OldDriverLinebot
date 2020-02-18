@@ -1,10 +1,11 @@
 import json
 from Command.Error import NotFoundCommand
+from Command.IU import IU
 from Module.LineBot import LineNotify
 
 command_dictionary = {
     # 'insert_token': InsertToken
-
+    '/iu': IU
 }
 
 
@@ -14,18 +15,20 @@ class CommandExecutor:
 
     def execute(self, command_json):
         try:
+
             command, parameter, replyToken = CommandAndParameterGenerator().get_command_and_parameter(str(command_json))
             command = CommandAvailabilityChecker().check(command, parameter)
-            self.__execute_command(command, command_json, replyToken)
+
+            self.__execute_command(command, parameter, replyToken)
 
         except Exception as e:
             error_message = 'CommandExecutor execute: {}'.format(e)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(error_message)
 
-    def __execute_command(self, command, command_json, replyToken):
+    def __execute_command(self, command, parameter, replyToken):
         if command != 'Error':
             command_instance = command_dictionary[command]
-            command_instance(**command_json).execute()
+            command_instance(parameter, replyToken).execute()
         else:
             NotFoundCommand(replyToken).execute()
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('無此指令')
@@ -44,7 +47,6 @@ class CommandAndParameterGenerator:
 
         # command = command_dict['command']
         # parameter = command_dict['parameter']
-        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(command_dict)
 
         return command, parameter, replyToken
 
