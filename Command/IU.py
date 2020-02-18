@@ -30,7 +30,8 @@ class IU:
         print(message_url)
         # message = ResultSender.image_send_message(
         #     original_content_url=message_url, preview_image_url=message_url)
-        message = ResultSender.text_send_message(text="你才咪妃，你全家都咪妃!")
+        # message = ResultSender.text_send_message(text="你才咪妃，你全家都咪妃!")
+        message = ResultSender.text_send_message(text=message_url)
         LineBotController.reply_message(self.replyToken, message)
 
 
