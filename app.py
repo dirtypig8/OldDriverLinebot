@@ -8,10 +8,14 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 from Module.LineBot import LineNotify
+from InteractiveServer import CommandExecutor
+from PublicData.LineBotController import LineBotController
+from ResultSender import ResultSender
 app = Flask(__name__)
 
 # Channel Access Token
 line_bot_api = LineBotApi('ZCwFUW8/2iIQd4c+TrF8FS+h+xghAwra53DJSVSZ4g9m9vSeh1kcOZDx4jTDN8qNh2WmHI5dUOEvxjNAsmdxu5Xc5GfzAlljpXblL+82K1W/cKSe3O9m35p05ezEeenZcT2YexXKH8PbOm3mfih+kwdB04t89/1O/w1cDnyilFU=')
+LineBotController.line_bot_api = line_bot_api
 # Channel Secret
 handler = WebhookHandler('5a6bbbf570d855974f66395df4b0cb9e')
 
@@ -34,15 +38,15 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    re = "你輸入的是{}\n\n你家靈堂失火".format(event.message.text)
+    re = "你輸入的是: '{}'\n\n感謝您的幫忙".format(event.message.text)
     message = TextSendMessage(text=re)
     line_bot_api.reply_message(event.reply_token, message)
 
     try:
-        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(event.source.user_id)
+        CommandExecutor().execute(command_json=event)
         profile = line_bot_api.get_profile(user_id=event.source.user_id)
-        profile_information = "\n{}\n{}".format(profile.display_name, profile.picture_url)
-        line_notify_message = "\n{}\n{}\n{}".format(event, profile_information, re)
+        profile_information = "\n使用者: {}\n照片URL: {}".format(profile.display_name, profile.picture_url)
+        line_notify_message = "\n{}\nmessage: '{}'".format(event, profile_information, re)
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
 
     except Exception as e:
@@ -50,5 +54,7 @@ def handle_message(event):
 
 import os
 if __name__ == "__main__":
+    LineBotController.reply_message = line_bot_api.reply_message
+    ResultSender.text_send_message = TextSendMessage
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
