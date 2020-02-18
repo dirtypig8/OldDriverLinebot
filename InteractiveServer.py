@@ -56,6 +56,8 @@ class CommandAvailabilityChecker:
         if command not in command_dictionary.keys():
             # raise CommandNotFoundError
             return 'Error'
+        else:
+            return command
 
 if __name__ == "__main__":
     message = '{"message": {"id": "11452795300826", "text": "IX", "type": "text"}, "replyToken": "db2f11e55f604a9b810971bf6f419b82", "source": {"type": "user", "userId": "U643c363fb1c41c4e9109ed48322d784c"}, "timestamp": 1582034792190, "type": "message"}'
