@@ -36,11 +36,10 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     re = "你輸入的是{}\n\n你家靈堂失火".format(event.message.text)
     message = TextSendMessage(text=re)
+    line_bot_api.reply_message(event.reply_token, message)
 
     profile = line_bot_api.get_profile(user_id=event.source.userId)
-    profile_information = "\n{}\n{}\n{}\n{}".format(
-        profile.display_name, profile.user_id, profile.picture_url, profile.status_message)
-    line_bot_api.reply_message(event.reply_token, message)
+    profile_information = "\n{}\n{}".format(profile.display_name, profile.picture_url)
     line_notify_message = "\n{}\n{}\n{}".format(event, profile_information, re)
     LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
 
