@@ -40,8 +40,8 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # re = "你輸入的是: '{}'\n\n感謝您的幫忙".format(event.message.text)
     # message = TextSendMessage(text=re)
-    message = ImageSendMessage(original_content_url='http://t0.gstatic.com/images?q=tbn:ANd9GcSpJgnChAVuck0kNXxk1pDnE7MivtRx7P8ciZHGwFqqkjT65U6G3nqDghPvkw',
-                               preview_image_url='http://t0.gstatic.com/images?q=tbn:ANd9GcSpJgnChAVuck0kNXxk1pDnE7MivtRx7P8ciZHGwFqqkjT65U6G3nqDghPvkw')
+    message = ImageSendMessage(original_content_url='https://i.imgur.com/Hn6lBtg.jpg',
+                               preview_image_url='https://i.imgur.com/Hn6lBtg.jpg')
     line_bot_api.reply_message(event.reply_token, message)
 
     try:
