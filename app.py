@@ -40,7 +40,8 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # re = "你輸入的是: '{}'\n\n感謝您的幫忙".format(event.message.text)
     # message = TextSendMessage(text=re)
-    # line_bot_api.reply_message(event.reply_token, message)
+    message = ImageSendMessage(original_content_url='http://t0.gstatic.com/images?q=tbn:ANd9GcSpJgnChAVuck0kNXxk1pDnE7MivtRx7P8ciZHGwFqqkjT65U6G3nqDghPvkw')
+    line_bot_api.reply_message(event.reply_token, message)
 
     try:
         profile = line_bot_api.get_profile(user_id=event.source.user_id)
