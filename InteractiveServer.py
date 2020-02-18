@@ -14,7 +14,7 @@ class CommandExecutor:
 
     def execute(self, command_json):
         try:
-            command, parameter, replyToken = CommandAndParameterGenerator().get_command_and_parameter(command_json)
+            command, parameter, replyToken = CommandAndParameterGenerator().get_command_and_parameter(str(command_json))
             command = CommandAvailabilityChecker().check(command, parameter)
             self.__execute_command(command, command_json, replyToken)
 
