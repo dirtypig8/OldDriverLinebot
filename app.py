@@ -50,8 +50,8 @@ def handle_message(event):
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(line_notify_message)
 
     except Exception as e:
-        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(e)
-
+        error_message = 'handle_message: {}'.format(e)
+        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(error_message)
 import os
 if __name__ == "__main__":
     LineBotController.reply_message = line_bot_api.reply_message

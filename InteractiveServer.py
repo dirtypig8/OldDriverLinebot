@@ -19,7 +19,8 @@ class CommandExecutor:
             self.__execute_command(command, command_json, replyToken)
 
         except Exception as e:
-            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(e)
+            error_message = 'CommandExecutor execute: {}'.format(e)
+            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(error_message)
 
     def __execute_command(self, command, command_json, replyToken):
         if command != 'Error':
