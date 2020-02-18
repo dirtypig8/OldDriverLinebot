@@ -14,7 +14,7 @@ class IU:
         url = 'https://www.google.com.sg/search?q={}&tbm=isch&tbs=sbd:0'.\
             format("IU")
         headers = {'User-Agent': 'Mozilla/5.0'}
-        response = requests.get(url, headers=headers)  # 使用header避免訪問受到限制
+        response = requests.get(url, headers=headers, verify=False)  # 使用header避免訪問受到限制
         soup = BeautifulSoup(response.content, 'html.parser')
         items = soup.find_all('img')
         img_url=list()
