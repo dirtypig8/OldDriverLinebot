@@ -9,6 +9,7 @@ class IU:
     def __init__(self, parameter, replyToken):
         self.replyToken = replyToken
         self.parameter = parameter
+
     def execute(self):
         url = 'https://www.google.com.sg/search?q={}&tbm=isch&tbs=sbd:0'.\
             format("IU")
@@ -26,11 +27,13 @@ class IU:
             if n:
                 img_url.append(url)
 
-        message_ule = choice(img_url)
-        message = ResultSender.image_send_message(original_content_url=message_ule,
-                                                  preview_image_url=message_ule)
+        message_url = choice(img_url)
+        print(message_url)
+        message = ResultSender.image_send_message(
+            original_content_url=message_url, preview_image_url=message_url)
         # message = ResultSender.text_send_message(text="你才咪妃，你全家都咪妃!")
         LineBotController.reply_message(self.replyToken, message)
+
 
 if __name__ == "__main__":
     IU(parameter='', replyToken='cf19f91ee96f43d79bb3fc362eba8be5').execute()
