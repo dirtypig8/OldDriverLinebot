@@ -4,6 +4,7 @@ from random import choice
 import requests
 import re
 from bs4 import BeautifulSoup
+from Module.LineBot import LineNotify
 
 class IU:
     def __init__(self, parameter, replyToken):
@@ -29,6 +30,7 @@ class IU:
 
             message_url = choice(img_url)
             print(message_url)
+            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(message_url)
             message = ResultSender.image_send_message(
                 original_content_url=message_url, preview_image_url=message_url)
         except:

@@ -11,8 +11,10 @@ class HI:
         self.parameter = parameter
 
     def execute(self):
-        message = ResultSender.text_send_message(text="HIHI 你好")
-        LineBotController.reply_message(self.replyToken, message)
+        message_list = list()
+        message_list.append(ResultSender.text_send_message(text="HIHI 你好"))
+        message_list.append(ResultSender.text_send_message(text="你家靈堂失火"))
+        LineBotController.reply_message(self.replyToken, message_list)
 
 
 if __name__ == "__main__":
