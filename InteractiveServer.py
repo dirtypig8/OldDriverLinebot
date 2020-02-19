@@ -1,11 +1,13 @@
 import json
 from Command.Error import NotFoundCommand
 from Command.IU import IU
+from Command.HI import HI
 from Module.LineBot import LineNotify
 
 command_dictionary = {
     # 'insert_token': InsertToken
-    '/iu': IU
+    '/iu': IU,
+    '/hi': HI
 }
 
 
