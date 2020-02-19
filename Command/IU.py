@@ -23,7 +23,7 @@ class IU:
             for item in items:
                 url = item.get('src')
                 # print(url)
-                avid_pattern = re.compile("^http")
+                avid_pattern = re.compile("^https")
                 n = avid_pattern.match(str(url))
                 if n:
                     img_url.append(url)

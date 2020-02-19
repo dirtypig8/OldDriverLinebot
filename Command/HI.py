@@ -14,6 +14,10 @@ class HI:
         message_list = list()
         message_list.append(ResultSender.text_send_message(text="HIHI 你好"))
         message_list.append(ResultSender.text_send_message(text="你家靈堂失火"))
+        img_url = 'https://imgur.dcard.tw/WDWrBTO.jpg'
+        message_list.append(ResultSender.image_send_message(
+            original_content_url=img_url, preview_image_url=img_url))
+
         LineBotController.reply_message(self.replyToken, message_list)
 
 
