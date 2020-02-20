@@ -18,6 +18,7 @@ class Avid:
 
     def execute(self):
         try:
+            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('start Avid')
             self.avgle_obj.get_avid_data(avid=self.parameter)
             self.Javbus_obj.get_avid_data(avid=self.parameter)
 

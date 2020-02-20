@@ -7,7 +7,7 @@ from queue import Queue
 from threading import Thread
 from Module.Net_fn import Net
 from bs4 import BeautifulSoup
-
+from Module.LineBot import LineNotify
 
 class Javbus:
     def __init__(self):
@@ -28,7 +28,7 @@ class Javbus:
             "X-Requested-With":  "XMLHttpRequest",
             "Referer": url
         }
-
+        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(url)
         rs = self.Net.Get(url=url, header=header)
         soup = BeautifulSoup(rs, 'lxml')
         date_tags = soup.find_all('date')
