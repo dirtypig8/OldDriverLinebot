@@ -13,35 +13,33 @@ class Avid:
     def __init__(self, parameter, replyToken):
         self.replyToken = replyToken
         self.parameter = parameter
-        # self.avgle_obj = Avgle()
-        # self.Javbus_obj = Javbus()
+        self.avgle_obj = Avgle()
+        self.Javbus_obj = Javbus()
 
     def execute(self):
         LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('start Avid')
         try:
-            preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
-            img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
-            message = ResultSender.video_send_message(original_content_url=preview_video_url, preview_image_url=img_url)
+            # preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
+            # img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
+            # message = ResultSender.video_send_message(original_content_url=preview_video_url, preview_image_url=img_url)
 
-            # self.avgle_obj.get_avid_data(avid=self.parameter)
+            self.avgle_obj.get_avid_data(avid=self.parameter)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('end Avid')
-            # self.Javbus_obj.get_avid_data(avid=self.parameter)
-            LineBotController.reply_message(self.replyToken, message)
-            # message, img_url, preview_video_url = self.send_message(avid=self.parameter)
+            self.Javbus_obj.get_avid_data(avid=self.parameter)
+
+            message, img_url, preview_video_url = self.send_message(avid=self.parameter)
 
             # print(message)
             # print(img_url)
-            message = 'test video'
-            preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
+            # message = 'test video'
+            # preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
             # preview_video_url = 'https://shareboxnow.com/wp-content/uploads/2020/02/IMG_0469.mp4'
-            img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
-            # message_list = list()
-            # message_list.append(ResultSender.text_send_message(text=message))
-            # message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
-            #                                                     preview_image_url=img_url))
-            # message_list.append(ResultSender.image_send_message(
-            #     original_content_url=img_url, preview_image_url=img_url))
-
+            # img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
+            message_list = list()
+            message_list.append(ResultSender.text_send_message(text=message))
+            message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
+                                                                preview_image_url=img_url))
+            LineBotController.reply_message(self.replyToken, message)
         except Exception as e:
             message = ResultSender.text_send_message(text="找不到這部拉")
             error_message = 'CommandExecutor execute: {}'.format(e)
