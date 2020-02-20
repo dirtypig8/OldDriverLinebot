@@ -20,6 +20,7 @@ class Avid:
         try:
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('start Avid')
             self.avgle_obj.get_avid_data(avid=self.parameter)
+            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('end Avid')
             self.Javbus_obj.get_avid_data(avid=self.parameter)
 
             message, img_url, preview_video_url = self.send_message(avid=self.parameter)
