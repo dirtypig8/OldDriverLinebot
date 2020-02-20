@@ -25,6 +25,8 @@ class CommandExecutor:
             command, parameter, replyToken = CommandAndParameterGenerator().get_command_and_parameter(str(command_json))
             command = CommandAvailabilityChecker().check(command, parameter)
 
+            message = 'command: {}\nparameter: {}'.format(command, parameter)
+            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(message)
             self.__execute_command(command, parameter, replyToken)
 
         except Exception as e:
