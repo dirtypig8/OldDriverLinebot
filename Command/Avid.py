@@ -39,7 +39,7 @@ class Avid:
             message_list.append(ResultSender.text_send_message(text=message))
             message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
                                                                 preview_image_url=img_url))
-            LineBotController.reply_message(self.replyToken, message)
+            LineBotController.reply_message(self.replyToken, message_list)
         except Exception as e:
             message = ResultSender.text_send_message(text="找不到這部拉")
             error_message = 'CommandExecutor execute: {}'.format(e)
