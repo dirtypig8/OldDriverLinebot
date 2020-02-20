@@ -7,7 +7,7 @@ from queue import Queue
 from threading import Thread
 from Module.Net_fn import Net
 from bs4 import BeautifulSoup
-from Module.LineBot import LineNotify
+
 
 class Javbus:
     def __init__(self):
@@ -28,7 +28,7 @@ class Javbus:
             "X-Requested-With":  "XMLHttpRequest",
             "Referer": url
         }
-        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(url)
+
         rs = self.Net.Get(url=url, header=header)
         soup = BeautifulSoup(rs, 'lxml')
         date_tags = soup.find_all('date')
@@ -51,10 +51,10 @@ class Javbus:
     def get_avid_data(self, avid):
         try:
             self.video_data = self.__get_ajax(avid)
-            # print("get_avid_data success '{}'".format(self.video_data))
+            print("get_avid_data success '{}'".format(self.video_data))
             return True
         except Exception as e:
-            # print("get_avid_data fail '{}'".format(e))
+            print("get_avid_data fail '{}'".format(e))
             return False
     def get_avid_magnet_url(self, avid):
         '''获取javbus的磁力链接'''
