@@ -31,10 +31,10 @@ class Avid:
             preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
             # preview_video_url = 'https://shareboxnow.com/wp-content/uploads/2020/02/IMG_0469.mp4'
             img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
-            message_list = list()
+            # message_list = list()
             # message_list.append(ResultSender.text_send_message(text=message))
-            message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
-                                                                preview_image_url=img_url))
+            # message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
+            #                                                     preview_image_url=img_url))
             # message_list.append(ResultSender.image_send_message(
             #     original_content_url=img_url, preview_image_url=img_url))
 
@@ -43,7 +43,8 @@ class Avid:
             error_message = 'CommandExecutor execute: {}'.format(e)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(error_message)
 
-        LineBotController.reply_message(self.replyToken, message_list)
+        LineBotController.reply_message(self.replyToken, ResultSender.video_send_message(original_content_url=preview_video_url,
+                                                                preview_image_url=img_url))
 
 
     def send_message(self, avid):
