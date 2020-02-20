@@ -17,8 +17,13 @@ class Avid:
         # self.Javbus_obj = Javbus()
 
     def execute(self):
+        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('start Avid')
         try:
-            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('start Avid')
+            preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
+            img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
+            message = ResultSender.video_send_message(original_content_url=preview_video_url, preview_image_url=img_url)
+            LineBotController.reply_message(self.replyTokenn, message)
+
             # self.avgle_obj.get_avid_data(avid=self.parameter)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('end Avid')
             # self.Javbus_obj.get_avid_data(avid=self.parameter)
