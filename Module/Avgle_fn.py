@@ -1,7 +1,7 @@
 import json
 import time
 from Module.Net_fn import Net
-
+from Module.LineBot import LineNotify
 
 class Avgle:
     def __init__(self):
@@ -18,8 +18,10 @@ class Avgle:
         page = 0
         limit = 2
         url = 'https://api.avgle.com/v1/jav/{}/{}?limit={}'.format(avid, page, limit)
+        LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(url)
         try:
             rs = self.Net.Get(url=url)
+            LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(rs)
             self.video_data = json.loads(rs)
             # print(self.video_data)
             return self.video_data['success'] and self.video_data['response']['total_videos']
