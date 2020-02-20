@@ -3,13 +3,15 @@ from Command.Error import NotFoundCommand
 from Command.IU import IU
 from Command.HI import HI
 from Command.Img import Img
+from Command.Avid import Avid
 from Module.LineBot import LineNotify
 
 command_dictionary = {
     # 'insert_token': InsertToken
     '/iu': IU,
     '/hi': HI,
-    '/img': Img
+    '/img': Img,
+    '/avid': Avid
 }
 
 

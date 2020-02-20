@@ -61,5 +61,6 @@ if __name__ == "__main__":
     LineBotController.reply_message = line_bot_api.reply_message
     ResultSender.text_send_message = TextSendMessage
     ResultSender.image_send_message = ImageSendMessage
+    ResultSender.video_send_message = VideoSendMessage
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
