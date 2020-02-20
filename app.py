@@ -40,7 +40,7 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # re = "你輸入的是: '{}'\n\n感謝您的幫忙".format(event.message.text)
     preview_video_url = 'https://shareboxnow.com/wp-content/uploads/2020/02/IMG_0469.mp4'
-    img_url = 'https://shareboxnow.com/wp-content/uploads/2020/02/th.jpeg'
+    img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
     message = VideoSendMessage(original_content_url=preview_video_url, preview_image_url=img_url)
     # message = TextSendMessage(text=re)
     # message = ImageSendMessage(original_content_url='https://i.imgur.com/Hn6lBtg.jpg',preview_image_url='https://i.imgur.com/Hn6lBtg.jpg')
