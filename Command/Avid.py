@@ -13,8 +13,8 @@ class Avid:
     def __init__(self, parameter, replyToken):
         self.replyToken = replyToken
         self.parameter = parameter
-        self.avgle_obj = Avgle()
-        self.Javbus_obj = Javbus()
+        # self.avgle_obj = Avgle()
+        # self.Javbus_obj = Javbus()
 
     def execute(self):
         try:
@@ -34,8 +34,8 @@ class Avid:
             message_list.append(ResultSender.text_send_message(text=message))
             message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
                                                                 preview_image_url=img_url))
-            message_list.append(ResultSender.image_send_message(
-                original_content_url=img_url, preview_image_url=img_url))
+            # message_list.append(ResultSender.image_send_message(
+            #     original_content_url=img_url, preview_image_url=img_url))
 
         except Exception as e:
             message = ResultSender.text_send_message(text="找不到這部拉")
