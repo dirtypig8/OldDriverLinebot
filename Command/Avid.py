@@ -48,8 +48,7 @@ class Avid:
             error_message = 'CommandExecutor execute: {}'.format(e)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(error_message)
 
-        LineBotController.reply_message(self.replyToken, ResultSender.video_send_message(original_content_url=preview_video_url,
-                                                                preview_image_url=img_url))
+        LineBotController.reply_message(self.replyToken, message)
 
 
     def send_message(self, avid):
