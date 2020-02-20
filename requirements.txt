@@ -3,4 +3,3 @@ flask
 beautifulsoup4
 lxml
 tqdm
-json
