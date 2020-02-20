@@ -26,7 +26,7 @@ class Avid:
             # self.avgle_obj.get_avid_data(avid=self.parameter)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('end Avid')
             # self.Javbus_obj.get_avid_data(avid=self.parameter)
-
+            LineBotController.reply_message(self.replyToken, message)
             # message, img_url, preview_video_url = self.send_message(avid=self.parameter)
 
             # print(message)
@@ -47,7 +47,7 @@ class Avid:
             error_message = 'CommandExecutor execute: {}'.format(e)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(error_message)
 
-        LineBotController.reply_message(self.replyToken, message)
+
 
 
     def send_message(self, avid):
