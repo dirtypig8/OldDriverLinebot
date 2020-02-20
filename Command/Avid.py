@@ -13,8 +13,8 @@ class Avid:
     def __init__(self, parameter, replyToken):
         self.replyToken = replyToken
         self.parameter = parameter
-        self.Javbus_obj = Javbus()
         self.avgle_obj = Avgle()
+        self.Javbus_obj = Javbus()
 
     def execute(self):
         try:

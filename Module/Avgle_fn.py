@@ -6,7 +6,7 @@ from Module.LineBot import LineNotify
 class Avgle:
     def __init__(self):
         self.Net = Net()
-        self.video_data = {}
+        self.video_data = None
 
     def get_avid_information(self, key='title'):
         key_book = ["title", "keyword", "embedded_url", "preview_video_url", "likes", "dislikes", "duration", "addtime"]
