@@ -19,14 +19,17 @@ class Avid:
     def execute(self):
         try:
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('start Avid')
-            self.avgle_obj.get_avid_data(avid=self.parameter)
+            # self.avgle_obj.get_avid_data(avid=self.parameter)
             LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send('end Avid')
-            self.Javbus_obj.get_avid_data(avid=self.parameter)
+            # self.Javbus_obj.get_avid_data(avid=self.parameter)
 
-            message, img_url, preview_video_url = self.send_message(avid=self.parameter)
+            # message, img_url, preview_video_url = self.send_message(avid=self.parameter)
 
             # print(message)
             # print(img_url)
+            message = 'test video'
+            preview_video_url = 'https://static-clst.avgle.com/videos/tmb11/370977/preview.mp4'
+            img_url = 'https://pics.javbus.com/cover/7hot_b.jpg'
             message_list = list()
             message_list.append(ResultSender.text_send_message(text=message))
             message_list.append(ResultSender.video_send_message(original_content_url=preview_video_url,
