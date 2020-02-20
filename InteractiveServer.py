@@ -2,12 +2,14 @@ import json
 from Command.Error import NotFoundCommand
 from Command.IU import IU
 from Command.HI import HI
+from Command.Img import Img
 from Module.LineBot import LineNotify
 
 command_dictionary = {
     # 'insert_token': InsertToken
     '/iu': IU,
-    '/hi': HI
+    '/hi': HI,
+    '/img': Img
 }
 
 

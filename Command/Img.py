@@ -6,14 +6,14 @@ import re
 from bs4 import BeautifulSoup
 from Module.LineBot import LineNotify
 
-class IU:
+class Img:
     def __init__(self, parameter, replyToken):
         self.replyToken = replyToken
         self.parameter = parameter
 
     def execute(self):
         try:
-            url = 'https://www.google.com/search?tbm=isch&q={}'.format('咪非')
+            url = 'https://www.google.com/search?tbm=isch&q={}'.format(self.parameter)
             headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}
             response = requests.get(url, headers=headers, verify=False)  # 使用header避免訪問受到限制
             soup = BeautifulSoup(response.text, "lxml")
@@ -34,7 +34,7 @@ class IU:
             message = ResultSender.image_send_message(
                 original_content_url=message_url, preview_image_url=message_url)
         except:
-            message = ResultSender.text_send_message(text="咪妃就咪妃，誰跟你IU，I你媽U，操。")
+            message = ResultSender.text_send_message(text="你要找圖，你要先講!")
         # message = ResultSender.text_send_message(text=message_url)
         LineBotController.reply_message(self.replyToken, message)
 
