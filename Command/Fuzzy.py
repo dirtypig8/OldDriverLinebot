@@ -23,7 +23,7 @@ class Fuzzy:
             result_list = process.extract(query=target_license_plate, choices=license_plate_list)
 
             print(result_list[0])
-            message_list.append(ResultSender.text_send_message(text=result_list[0]))
+            message_list.append(ResultSender.text_send_message(text='AAAAAAAAAAAAAAAA'))
             LineBotController.reply_message(self.replyToken, message_list)
 
         except Exception as e:
