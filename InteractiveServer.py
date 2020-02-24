@@ -50,10 +50,15 @@ class CommandAndParameterGenerator:
         replyToken = command_dict['replyToken']
         message = command_dict['message']['text'].split()
         command = message[0]
-        try:
-            parameter = message[1]
-        except:
-            parameter = ''
+
+        if len(message) > 2:
+            del message[0]
+            parameter = message
+        else:
+            try:
+                parameter = message[1]
+            except:
+                parameter = ''
 
         # command = command_dict['command']
         # parameter = command_dict['parameter']
