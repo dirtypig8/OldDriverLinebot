@@ -17,12 +17,13 @@ class Fuzzy:
         message_list = list()
         try:
             target_license_plate = self.parameter[0]
-            license_plate_list = list()
-            license_plate_list.append(self.parameter[1])
+
+            del self.parameter[0]
+            license_plate_list = self.parameter
 
             result_list = process.extract(query=target_license_plate, choices=license_plate_list)
 
-            message = '{} ->{}'.format(target_license_plate, result_list)
+            message = '{} -> {}'.format(target_license_plate, result_list)
             print(message)
             message_list.append(ResultSender.text_send_message(text=message))
             LineBotController.reply_message(self.replyToken, message_list)
@@ -33,4 +34,4 @@ class Fuzzy:
             LineBotController.reply_message(self.replyToken, message_list)
 
 if __name__ == "__main__":
-    Fuzzy(parameter=['abc1111', '1111'], replyToken='cf19f91ee96f43d79bb3fc362eba8be5').execute()
+    Fuzzy(parameter=['abc1111', '1111' , '1133'], replyToken='cf19f91ee96f43d79bb3fc362eba8be5').execute()
