@@ -23,7 +23,7 @@ class Fuzzy:
 
             message_list.append(ResultSender.text_send_message(text=result))
             LineBotController.reply_message(self.replyToken, message_list)
-            LineBotController.reply_message(self.replyToken, message_list)
+
         except Exception as e:
             error_message = '比對失敗 : {}'.format(e)
             message_list.append(ResultSender.text_send_message(text=error_message))
