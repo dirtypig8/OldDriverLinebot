@@ -33,7 +33,7 @@ class IU:
             # LineNotify(access_token="VuNI0a99OAJCVtLkfC03TDozVi2HgsregB7vjLgeyQm").send(message_url)
             message = ResultSender.image_send_message(
                 original_content_url=message_url, preview_image_url=message_url)
-        except:
+        except Exception as e:
             message = ResultSender.text_send_message(text="咪妃就咪妃，誰跟你IU，I你媽U，操。")
         # message = ResultSender.text_send_message(text=message_url)
         LineBotController.reply_message(self.replyToken, message)

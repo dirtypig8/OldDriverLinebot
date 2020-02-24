@@ -4,6 +4,7 @@ from Command.IU import IU
 from Command.HI import HI
 from Command.Img import Img
 from Command.Avid import Avid
+from Command.Fuzzy import Fuzzy
 from Module.LineBot import LineNotify
 
 command_dictionary = {
@@ -11,7 +12,8 @@ command_dictionary = {
     '/iu': IU,
     '/hi': HI,
     '/img': Img,
-    '/avid': Avid
+    '/avid': Avid,
+    '/fuzzy': Fuzzy
 }
 
 
